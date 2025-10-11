@@ -34,18 +34,12 @@ namespace WorldModel.Migrations
                         .HasColumnType("int")
                         .HasColumnName("countryID");
 
-                    b.Property<string>("Latitude")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("decimal(18,2)")
                         .HasColumnName("latitude");
 
-                    b.Property<string>("Longitude")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("decimal(18,2)")
                         .HasColumnName("longitude");
 
                     b.Property<string>("Name")
@@ -54,6 +48,10 @@ namespace WorldModel.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
                         .HasColumnName("name");
+
+                    b.Property<decimal>("Population")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("population");
 
                     b.HasKey("Id")
                         .HasName("PK_Cities");

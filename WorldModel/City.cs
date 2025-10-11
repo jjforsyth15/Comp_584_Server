@@ -22,14 +22,13 @@ public partial class City
     public string Name { get; set; } = null!;
 
     [Column("latitude")]
-    [StringLength(10)]
-    [Unicode(false)]
-    public string Latitude { get; set; } = null!;
+    public decimal Latitude { get; set; }
 
     [Column("longitude")]
-    [StringLength(10)]
-    [Unicode(false)]
-    public string Longitude { get; set; } = null!;
+    public decimal Longitude { get; set; }
+
+    [Column("population")]
+    public decimal Population { get; set; }
 
     [ForeignKey("CountryId")]
     [InverseProperty("Cities")]
