@@ -1,3 +1,4 @@
+using Comp_584_Server;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -35,12 +36,14 @@ builder.Services.AddAuthentication(c =>
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
 
-        ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
-        ValidAudience = builder.Configuration["JwtSettings:Audience"],
+        ValidIssuer = builder.Configuration["JwtSettings:issuer"],
+        ValidAudience = builder.Configuration["JwtSettings:audience"],
         IssuerSigningKey = new SymmetricSecurityKey(
-            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secretkey"]!))
+            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:secretkey"]!))
     };
 });
+
+builder.Services.AddScoped<JwtHandler>();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

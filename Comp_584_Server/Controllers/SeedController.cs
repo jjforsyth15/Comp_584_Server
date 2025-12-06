@@ -112,7 +112,6 @@ namespace Comp_584_Server.Controllers
                 LockoutEnabled = false,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
-
             await userManager.CreateAsync(adminUser, configuration["DefaultPasswords:admin"]!);
             await userManager.AddToRoleAsync(adminUser, administrator);
 
@@ -124,9 +123,9 @@ namespace Comp_584_Server.Controllers
                 LockoutEnabled = false,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
-
             await userManager.CreateAsync(regularUser, configuration["DefaultPasswords:user"]!);
             await userManager.AddToRoleAsync(regularUser, registeredUser);
+
             return Ok();
         }
 

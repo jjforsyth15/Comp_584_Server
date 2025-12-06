@@ -13,9 +13,9 @@ namespace Comp_584_Server
         public async Task<JwtSecurityToken> GenerateTokenAsync(WorldModelUser user)
         {
             return new JwtSecurityToken(
-                issuer: configuration["Jwt:Issuer"],
-                audience: configuration["Jwt:Audience"],
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(configuration["JwtSettings:ExpireInMinutes"])),
+                issuer: configuration["JwtSettings:issuer"],
+                audience: configuration["JwtSettings:audience"],
+                expires: DateTime.Now.AddMinutes(Convert.ToDouble(configuration["JwtSettings:expiryInMinutes"])),
                 claims: await GetClaimsAsync(user),
                 signingCredentials: GetSigningCredentials()
             );
